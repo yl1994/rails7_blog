@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "edit_article_#{article.id}" %>
+<%= link_to "修改",edit_article_path(article),class: "btn btn-primary btn-small",data: {turbo_frame: "edit_article_#{article.id}"} %>
+  <%= link_to "删除",article_path(article),data: {turbo_method: :delete, turbo_confirm: "确定要删除吗？",turbo_frame: "_top"},class: "btn btn-danger btn-small" %>
+  <%= link_to article.published? ? "隐藏" : "发布",change_published_article_path(article),data: {turbo_method: :post},class: "btn btn-success btn-small" %>

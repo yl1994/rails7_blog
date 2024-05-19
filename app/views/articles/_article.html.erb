@@ -1,0 +1,12 @@
+<% @index ||= 0 %>
+<tr id="<%= dom_id(article) %>">
+  <td><%= @index + 1 %></td>
+  <td><%= article.title %></td>
+  <td><%= article.kind %></td>
+  <td><%= article.published? ? "已发布" : "未发布" %></td>
+  <td><%= article.content %></td>
+  <td>
+    <%= render 'action_bar',article: article %> 
+  </td>
+</tr>
+<% @index += 1 %>

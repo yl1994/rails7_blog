@@ -1,0 +1,37 @@
+<%#= turbo_frame_tag @article do %>
+  <div class="modal fade show" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: block;" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= @article.new_record? ? "新增文章" : "修改文章"%></h1>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: @article do |f| %>
+          <div class="mb-3">
+           <%= f.label "标题" %>
+           <%= f.text_field :title, class: "form-control" %>
+         </div> 
+        <div class="mb-3">
+           <%= f.label "类别" %>
+           <%= f.select :kind,["ruby","go","php"], class: "form-select" %>
+         </div> 
+         <div class="mb-3">
+           <%= f.label "内容" %>
+           <%= f.text_area :content, class: "form-control",row: 3 %>
+         </div>
+         <div class="modal-footer">
+           <%= f.submit "保存", class: "btn btn-primary" %>
+           <%= link_to "关闭", articles_path,class: "btn btn-secondary"%>      
+         </div>
+       <% end %>
+      </div>
+    
+    </div>
+  </div>
+</div>  
+
+
+
+
+
+<%# end %>

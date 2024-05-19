@@ -1,0 +1,17 @@
+<% flash.each do |status,msg| %>
+  <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= msg %>
+    <button id="closeAlert" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+
+
+<script type="text/javascript">
+    setTimeout(function() {
+      const closeAlert =  document.getElementById('closeAlert')
+      if(closeAlert){
+        closeAlert.click();
+      }
+    }, 3000);
+</script>

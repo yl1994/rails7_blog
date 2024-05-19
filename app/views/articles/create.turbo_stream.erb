@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "articles", @article %>
+<%= turbo_stream.update "new_article", "" %>
+<%= turbo_stream.update "flash", partial: "shared/flash_message" %>
+<%= turbo_stream.replace "article_echarts",partial: "echarts",locals: {chart_data: @chart_data} %>

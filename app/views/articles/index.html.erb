@@ -1,0 +1,50 @@
+<h1>文章列表</h1>
+<%= link_to "新增",new_article_path,class: "btn btn-success",data: {turbo_frame: "new_article"} %>
+<%= turbo_frame_tag "new_article" %>
+
+<%= turbo_stream_from "articles" %>
+<%= render "echarts", chart_data: @chart_data %>
+<div class="container text-start">
+  <!-- <div class="row">
+    <div class="col">
+      标题
+    </div>
+    <div class="col">
+      类别
+    </div>
+    <div class="col">
+      状态
+    </div>
+    <div class="col">
+      内容
+    </div>
+    <div class="col">
+      操作
+    </div>
+  </div> -->
+  <%= form_with(url: articles_path, method: "get",id: "search-form", data: { controller: "datable" } ) do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.text_field :title_cont %>
+
+    <%= f.label :kind_eq %>
+    <%= f.select :kind_eq,['ruby', 'go', 'php'],{},{class: "form-select"} %>
+
+    <%= f.submit "Search", data: { action: "click->datable#handleClick" }  %>
+  <% end %>
+
+  <table class="table" data-controller="datable" id="article_table">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>标题</th>
+        <th>类别</th>
+        <th>状态</th>
+        <th>内容</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="articles">
+      <!-- 动态加载数据 -->
+    </tbody>
+  </table>
+</div>
