@@ -74,3 +74,5 @@ gem "hotwire-rails", "~> 0.1.3"
 gem "kaminari", "~> 1.2"
 
 gem "ransack", "~> 4.1"
+
+gem "passenger"
